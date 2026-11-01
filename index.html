@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burhan Samudra - Portofolio TKJ Interaktif</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0B0F19;
+            --bg-card: #111827;
+            --bg-card-hover: #1F2937;
+            --primary: #00F2FE;
+            --secondary: #4FACFE;
+            --accent: #38BDF8;
+            --emerald: #10B981;
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --border-color: #1F2937;
+            --border-highlight: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 8%;
+            background-color: rgba(11, 15, 25, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: monospace;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-family: monospace;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-nav {
+            border: 1px solid var(--primary);
+            color: var(--primary) !important;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0 3rem 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 7.5rem;
+            padding-bottom: 4rem;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0.9rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--emerald);
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-family: monospace;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--emerald);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px var(--emerald);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            text-align: left;
+        }
+
+        .hero-cmd {
+            font-family: monospace;
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-cmd span {
+            color: var(--primary);
+        }
+
+        .typing-text {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.3rem;
+            background-color: var(--primary);
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.6rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: #000;
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(17, 24, 39, 0.8);
+            color: var(--text-main);
+            border: 1px solid var(--border-highlight);
+            font-family: monospace;
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--primary);
+        }
+
+        /* Terminal Window Widget */
+        .terminal-window {
+            width: 100%;
+            background: #0d1117;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .terminal-header {
+            background: #161b22;
+            padding: 0.6rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .terminal-body {
+            padding: 1.2rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            max-height: 280px;
+            overflow-y: auto;
+        }
+
+        .terminal-history p {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .terminal-input-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .prompt {
+            color: var(--emerald);
+            white-space: nowrap;
+        }
+
+        .terminal-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-main);
+            font-family: monospace;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        /* Section Header */
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-tag {
+            color: var(--primary);
+            font-family: monospace;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        /* Profile Section */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .profile-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .avatar-box {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #1E293B, #0F172A);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem auto;
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .profile-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .profile-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+
+        .profile-bio {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .profile-bio p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-item {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        .stat-val {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--border-highlight);
+            transform: translateY(-3px);
+        }
+
+        .skill-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list li::before {
+            content: "•";
+            color: var(--primary);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-img {
+            height: 180px;
+            background: #1F2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 2.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .project-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-badge {
+            display: inline-block;
+            align-self: flex-start;
+            padding: 0.2rem 0.6rem;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-body h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-points {
+            list-style: none;
+            margin-top: auto;
+        }
+
+        .project-points li {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .project-points li::before {
+            content: "▪";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: 0.3s;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <!-- Navbar dengan Logo Gambar -->
+<nav>
+    <a href="#" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+        <img src="profil.jpg" alt="Logo" style="height: 35px; width: auto; border-radius: 4px;">
+        <span style="color: var(--text-main);">BURHAN<span>SAMUDRA</span></span>
+    </a>
+
+        <ul class="nav-links">
+            <li><a href="#tentang">/tentang</a></li>
+            <li><a href="#keahlian">/keahlian</a></li>
+            <li><a href="#proyek">/proyek</a></li>
+            <li><a href="#kontak">/kontak</a></li>
+            <li><a href="#kontak" class="btn-nav">[ HUBUNGI ]</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                STATUS: ONLINE & READY FOR WORK
+            </div>
+            <h1>Teknik Komputer &<br>Jaringan</h1>
+            <div class="hero-cmd">
+                <span>$</span> <span id="typing-effect" class="typing-text"></span><div class="cursor"></div>
+            </div>
+            <div class="btn-group">
+                <a href="#proyek" class="btn btn-primary">Jelajahi Proyek <i class="fas fa-arrow-right"></i></a>
+                <button id="focus-terminal-btn" class="btn btn-secondary">>_ Buka Terminal</button>
+            </div>
+
+            <!-- Interaktif Terminal Window Widget -->
+            <div class="terminal-window" id="terminal-section">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <span class="dot dot-red"></span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-green"></span>
+                    </div>
+                    <div>bash — burhan@cyber-node:~</div>
+                    <div><i class="fas fa-lock"></i> SSH-2.0 Secured</div>
+                </div>
+                <div class="terminal-body" id="terminal-body">
+                    <div class="terminal-history" id="terminal-history">
+                        <p><span class="prompt">burhan@cyber-node:~$</span> welcome</p>
+                        <p style="color: var(--primary);">System Ready! Ketik <b style="color:#FFF;">help</b> atau <b style="color:#FFF;">proyek</b> / <b style="color:#FFF;">keahlian</b> / <b style="color:#FFF;">tentang</b> / <b style="color:#FFF;">clear</b> untuk berinteraksi langsung.</p>
+                    </div>
+                    <div class="terminal-input-row">
+                        <span class="prompt">burhan@cyber-node:~$</span>
+                        <input type="text" id="terminal-input" class="terminal-input" placeholder="ketik perintah di sini..." autofocus autocomplete="off">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="tentang">
+            <div class="section-header">
+                <span class="section-tag">// TENTANG PROFIL</span>
+                <h2>Profil & Pengalaman</h2>
+            </div>
+            <div class="profile-grid">
+               <div class="profile-card">
+    
+    <img src="profil.jpg" alt="Burhan Samudra" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); margin: 0 auto 1.5rem auto; display: block;">
+    <h3>Burhan Samudra</h3>
+    <p>ID: TKJ-2026-MLG</p>
+
+                    <div class="tech-tags">
+                        <span class="tech-tag">MikroTik</span>
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">Web Dev</span>
+                        <span class="tech-tag">Hardware</span>
+                    </div>
+                </div>
+                <div class="profile-bio">
+                    <p>Saya siswa kelas XI Teknik Komputer dan Jaringan (TKJ) di SMK Negeri 4 Malang yang memiliki minat mendalam di bidang infrastruktur jaringan, administrasi server Linux, serta pengembangan web. Memiliki pengalaman praktis dalam konfigurasi jaringan, maintenance perangkat keras komputer, hingga pengelolaan basis data dan server lokal. Melalui program magang/PKL ini, saya siap mengaplikasikan keterampilan teknis saya serta belajar langsung dari dunia kerja industri IT.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">STATUS MAGANG</span>
+                            <span class="stat-val">ONLINE & READY FOR WORK</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">SEKOLAH</span>
+                            <span class="stat-val">SMK Negeri 4 Malang</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">FOKUS KEAHLIAN</span>
+                            <span class="stat-val">Jaringan, Server & Web</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">LOKASI</span>
+                            <span class="stat-val">Malang, Jawa Timur</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="keahlian">
+            <div class="section-header">
+                <span class="section-tag">// DOMAIN KEAHLIAN</span>
+                <h2>Spesialisasi Teknis</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>Jaringan & Keamanan</h3>
+                    <ul class="skill-list">
+                        <li>Subnetting IPv4 & CIDR</li>
+                        <li>Cisco Packet Tracer</li>
+                        <li>Routing & Switching</li>
+                        <li>Manajemen Router MikroTik</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-server"></i></div>
+                    <h3>Server & Hosting</h3>
+                    <ul class="skill-list">
+                        <li>Administrasi Server Linux</li>
+                        <li>VirtualBox & VPS</li>
+                        <li>Konfigurasi FTP & Web Server</li>
+                        <li>Domain & Web Hosting</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-code"></i></div>
+                    <h3>Web & Database</h3>
+                    <ul class="skill-list">
+                        <li>HTML5 & CSS3 Responsive</li>
+                        <li>Pemrograman PHP Dasar</li>
+                        <li>Pengelolaan Database MySQL</li>
+                        <li>Manajemen phpMyAdmin</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-desktop"></i></div>
+                    <h3>Perangkat Komputer</h3>
+                    <ul class="skill-list">
+                        <li>Perakitan PC & Cleaning</li>
+                        <li>Troubleshooting Hardware</li>
+                        <li>Cable Management</li>
+                        <li>Instalasi Sistem Operasi</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="proyek">
+            <div class="section-header">
+                <span class="section-tag">// PORTOFOLIO PROYEK</span>
+                <h2>Proyek Terpilih</h2>
+            </div>
+            <div class="projects-grid">
+                  <div class="project-card">
+            <img src="proyek1.jpg" alt="Proyek Smart City" style="width: 100%; height: 180px; object-fit: cover; border-bottom: 1px solid var(--border-color);">
+                <div class="project-body">
+                        <span class="project-badge">Kelas X, Semester 1</span>
+                        <h3>Maket Smart City: IoT, EWS, dan CCTV</h3>
+                        <ul class="project-points">
+                            <li>Membuat maket Smart City sebagai penerapan teknologi Internet of Things (IoT).</li>
+                            <li>Mengembangkan konsep sistem peringatan dini (EWS) dan pemantauan CCTV.</li>
+                            <li>Mempelajari integrasi perangkat, komunikasi data, jaringan, dan sistem monitoring.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+            <img src="proyek2.jpg" alt="Proyek Smart City" style="width: 100%; height: 180px; object-fit: cover; border-bottom: 1px solid var(--border-color);">
+                <div class="project-body">
+                        <span class="project-badge">Kelas X, Semester 2</span>
+                        <h3>Maintenance PC SMPN 21 Malang</h3>
+                        <ul class="project-points">
+                            <li>Melakukan pemeriksaan dan troubleshooting komputer laboratorium.</li>
+                            <li>Melakukan pembersihan komponen dan penanganan masalah perangkat keras.</li>
+                            <li>Membantu instalasi ulang Windows serta penanganan masalah sistem operasi.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="project-card">
+            <img src="proyek3.jpg" alt="Proyek Smart City" style="width: 100%; height: 180px; object-fit: cover; border-bottom: 1px solid var(--border-color);">
+                <div class="project-body">
+                        <span class="project-badge">Kelas XI, Semester 1</span>
+                        <h3>Hostara: Hosting dan Pengujian Keamanan Web</h3>
+                        <ul class="project-points">
+                            <li>Melakukan hosting dan deployment website agar dapat diakses melalui internet.</li>
+                            <li>Mempelajari konfigurasi hosting dan pengelolaan website pada server.</li>
+                            <li>Melakukan pengujian keamanan website untuk mengidentifikasi potensi kerentanan.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="kontak">
+            <div class="section-header">
+                <span class="section-tag">// INFORMASI KONTAK</span>
+                <h2>Hubungi Saya</h2>
+            </div>
+            <div class="contact-grid">
+                <a href="https://wa.me/6285735410473" target="_blank" class="contact-card">
+                    <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                    <h4>WhatsApp</h4>
+                    <p>+62 857-3541-0473</p>
+                </a>
+                <a href="mailto:burhansamudra2@gmail.com" class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <h4>Email</h4>
+                    <p>burhansamudra2@gmail.com</p>
+                </a>
+                <a href="https://github.com/burhansamudra" target="_blank" class="contact-card">
+                    <div class="contact-icon"><i class="fab fa-github"></i></div>
+                    <h4>GitHub</h4>
+                    <p>github.com/burhansamudra</p>
+                </a>
+                <a href="https://instagram.com/burhan_samudra7" target="_blank" class="contact-card">
+                    <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+                    <h4>Instagram</h4>
+                    <p>@burhans_samudra7</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Burhan Samudra — Siswa TKJ SMK Negeri 4 Malang. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Interactive Scripting -->
+    <script>
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Dynamic Typing Effect for $ Symbol Area
+        const phrases = ["System Integrator", "Network Specialist", "Linux Administrator", "Web Developer"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById("typing-effect");
+
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) {
+                typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let speed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                speed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                speed = 500;
+            }
+
+            setTimeout(typeEffect, speed);
+        }
+
+        document.addEventListener("DOMContentLoaded", typeEffect);
+
+        // Terminal Interactive CLI Command Execution
+        const terminalInput = document.getElementById("terminal-input");
+        const terminalHistory = document.getElementById("terminal-history");
+        const terminalBody = document.getElementById("terminal-body");
+        const focusTerminalBtn = document.getElementById("focus-terminal-btn");
+
+        focusTerminalBtn.addEventListener("click", () => {
+            terminalInput.focus();
+            document.getElementById("terminal-section").scrollIntoView({ behavior: 'smooth' });
+        });
+
+        terminalInput.addEventListener("keydown", function(e) {
+            if (e.key === "Enter") {
+                const cmd = this.value.trim().toLowerCase();
+                if (cmd === "") return;
+
+                // Add executed command line
+                const cmdLine = document.createElement("p");
+                cmdLine.innerHTML = `<span class="prompt">admin@cyber-node:~$</span> ${cmd}`;
+                terminalHistory.appendChild(cmdLine);
+
+                // Command processing
+                const responseLine = document.createElement("p");
+                responseLine.style.color = "var(--text-muted)";
+
+                switch (cmd) {
+                    case "help":
+                        responseLine.innerHTML = `<span style="color:var(--accent);">Perintah yang tersedia:</span><br>
+                        - <b>tentang</b> : Menampilkan profil Burhan Samudra<br>
+                        - <b>keahlian</b> : Menampilkan spesialisasi teknis<br>
+                        - <b>proyek</b> : Menampilkan daftar proyek terpilih<br>
+                        - <b>kontak</b> : Menampilkan informasi kontak<br>
+                        - <b>clear</b> : Membersihkan layar terminal`;
+                        break;
+                    case "tentang":
+                        document.querySelector('#tentang').scrollIntoView({ behavior: 'smooth' });
+                        responseLine.innerHTML = `<span style="color:var(--emerald);">Navigasi ke bagian /tentang berhasil...</span>`;
+                        break;
+                    case "keahlian":
+                        document.querySelector('#keahlian').scrollIntoView({ behavior: 'smooth' });
+                        responseLine.innerHTML = `<span style="color:var(--emerald);">Navigasi ke bagian /keahlian berhasil...</span>`;
+                        break;
+                    case "proyek":
+                        document.querySelector('#proyek').scrollIntoView({ behavior: 'smooth' });
+                        responseLine.innerHTML = `<span style="color:var(--emerald);">Navigasi ke bagian /proyek berhasil...</span>`;
+                        break;
+                    case "kontak":
+                        document.querySelector('#kontak').scrollIntoView({ behavior: 'smooth' });
+                        responseLine.innerHTML = `<span style="color:var(--emerald);">Navigasi ke bagian /kontak berhasil...</span>`;
+                        break;
+                    case "clear":
+                        terminalHistory.innerHTML = "";
+                        this.value = "";
+                        return;
+                    default:
+                        responseLine.innerHTML = `<span style="color:#FF5F56;">Command not found: "${cmd}". Ketik <b>help</b> untuk bantuan.</span>`;
+                }
+
+                terminalHistory.appendChild(responseLine);
+                this.value = "";
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>
+<!--  -->
