@@ -593,13 +593,44 @@
                 display: none;
             }
         }
+        /* Tambahan CSS untuk Tombol Menu HP */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--text-main);
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(11, 15, 25, 0.98);
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--border-color);
+        text-align: center;
+        gap: 1.2rem;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+}
     </style>
 </head>
 <body>
 
     <!-- Navbar -->
     <!-- Navbar dengan Logo Gambar -->
-<nav>
+    <nav>
     <a href="#" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
         <img src="profil.jpg" alt="Logo" style="height: 35px; width: auto; border-radius: 4px;">
         <span style="color: var(--text-main);">BURHAN<span>SAMUDRA</span></span>
@@ -613,7 +644,6 @@
             <li><a href="#kontak" class="btn-nav">[ HUBUNGI ]</a></li>
         </ul>
     </nav>
-
     <div class="container">
         <!-- Hero Section -->
         <section class="hero">
@@ -937,12 +967,25 @@
                         responseLine.innerHTML = `<span style="color:#FF5F56;">Command not found: "${cmd}". Ketik <b>help</b> untuk bantuan.</span>`;
                 }
 
-                terminalHistory.appendChild(responseLine);
+               terminalHistory.appendChild(responseLine);
                 this.value = "";
                 terminalBody.scrollTop = terminalBody.scrollHeight;
             }
         });
+
+        // Script untuk Toggle Menu HP
+        const menuBtn = document.getElementById('menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
     </script>
 </body>
 </html>
-<!--  -->
