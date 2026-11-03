@@ -624,32 +624,131 @@
         display: flex;
     }
 }
+    
+        /* Penyempurnaan tampilan ponsel */
+        section[id] { scroll-margin-top: 80px; }
+        @media (max-width: 768px) {
+            nav { padding: .8rem 5%; min-height: 64px; }
+            .logo { font-size: 1rem; }
+            .logo img { height: 32px !important; }
+            .menu-toggle {
+                display: inline-flex; align-items: center; justify-content: center;
+                width: 42px; height: 42px; border: 1px solid var(--border-highlight);
+                border-radius: 8px; background: var(--bg-card); color: var(--primary);
+                font-size: 1.15rem; cursor: pointer;
+            }
+            .nav-links {
+                display: none; position: absolute; top: 100%; left: 0; width: 100%;
+                padding: .8rem 5% 1rem; flex-direction: column; align-items: stretch;
+                gap: .25rem; background: rgba(11,15,25,.98);
+                border-bottom: 1px solid var(--border-color);
+                box-shadow: 0 12px 24px rgba(0,0,0,.28);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li { width: 100%; }
+            .nav-links a { display: block; padding: .75rem; font-size: .95rem; }
+            .nav-links .btn-nav { text-align: center; margin-top: .3rem; }
+            .container { padding: 0 1.1rem; }
+            .hero { min-height: auto; padding-top: 7.3rem; padding-bottom: 3rem; align-items: stretch; }
+            .status-badge { align-self: flex-start; font-size: .7rem; }
+            .hero h1 { font-size: clamp(2rem, 8vw, 2.4rem); line-height: 1.12; }
+            .hero-cmd { min-height: 2rem; font-size: clamp(.95rem, 4vw, 1.1rem); flex-wrap: wrap; gap: .35rem; }
+            .cursor { width: 8px; height: 1.05rem; }
+            .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; margin-bottom: 1.5rem; }
+            .btn { min-height: 46px; padding: .7rem .55rem; justify-content: center; text-align: center; font-size: .85rem; }
+            .terminal-window { border-radius: 10px; }
+            .terminal-header { padding: .65rem .8rem; font-size: .72rem; }
+            .terminal-header > div:nth-child(2) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+            .terminal-header > div:last-child { display: none; }
+            .terminal-body { padding: .9rem; font-size: .82rem; line-height: 1.55; max-height: 190px; }
+            .terminal-history p { margin-bottom: .45rem; line-height: 1.55; overflow-wrap: anywhere; }
+            .terminal-input-row { gap: .4rem; }
+            .prompt { font-size: .74rem; white-space: nowrap; }
+            .terminal-input { min-width: 0; font-size: .82rem; }
+            section { padding: 4rem 0 2.5rem; }
+            .section-header { margin-bottom: 1.8rem; }
+            .section-header h2 { font-size: 1.65rem; }
+            .profile-grid, .skills-grid, .projects-grid, .contact-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .profile-card { padding: 1.8rem 1.2rem; }
+            .profile-bio { padding: 1.35rem; }
+            .profile-bio p { font-size: .96rem; line-height: 1.7; }
+            .skill-card, .project-body, .contact-card { padding: 1.25rem; }
+            .project-img { height: 165px; }
+            footer { padding: 2rem 0; font-size: .8rem; }
+        }
+        @media (max-width: 380px) {
+            .container { padding: 0 .9rem; }
+            .btn-group { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.9rem; }
+            .terminal-body { padding: .75rem; font-size: .78rem; }
+            .prompt { font-size: .68rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+        }
+        /* Styling tombol menu hamburger untuk HP */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--text-main);
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Memunculkan tombol garis tiga hanya di HP */
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(11, 15, 25, 0.98);
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--border-color);
+        text-align: center;
+        gap: 1.2rem;
+    }
+    .nav-links.active {
+        display: flex; /* Membuka menu saat tombol diklik */
+    }
+}
+
     </style>
 </head>
 <body>
 
     <!-- Navbar -->
     <!-- Navbar dengan Logo Gambar -->
-    <nav>
+   <nav>
     <a href="#" class="logo" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
-        <img src="profil.jpg" alt="Logo" style="height: 35px; width: auto; border-radius: 4px;">
+        <img src="profil.jpg" alt="Logo" style="height: 35px; width: 35px; border-radius: 50%; object-fit: cover;">
         <span style="color: var(--text-main);">BURHAN<span>SAMUDRA</span></span>
     </a>
+    
+    <!-- Tombol garis tiga untuk HP -->
+    <button class="menu-toggle" id="menu-btn">
+        <i class="fas fa-bars"></i>
+    </button>
 
-        <ul class="nav-links">
-            <li><a href="#tentang">/tentang</a></li>
-            <li><a href="#keahlian">/keahlian</a></li>
-            <li><a href="#proyek">/proyek</a></li>
-            <li><a href="#kontak">/kontak</a></li>
-            <li><a href="#kontak" class="btn-nav">[ HUBUNGI ]</a></li>
-        </ul>
-    </nav>
+    <ul class="nav-links" id="nav-menu">
+        <li><a href="#tentang">/tentang</a></li>
+        <li><a href="#keahlian">/keahlian</a></li>
+        <li><a href="#proyek">/proyek</a></li>
+        <li><a href="#kontak">/kontak</a></li>
+        <li><a href="#kontak" class="btn-nav">[ HUBUNGI ]</a></li>
+    </ul>
+</nav>
     <div class="container">
         <!-- Hero Section -->
         <section class="hero">
             <div class="status-badge">
                 <span class="status-dot"></span>
-                STATUS: ONLINE & READY FOR WORK
+                STATUS: OPEN FOR PKL
             </div>
             <h1>Teknik Komputer &<br>Jaringan</h1>
             <div class="hero-cmd">
@@ -657,7 +756,7 @@
             </div>
             <div class="btn-group">
                 <a href="#proyek" class="btn btn-primary">Jelajahi Proyek <i class="fas fa-arrow-right"></i></a>
-                <button id="focus-terminal-btn" class="btn btn-secondary">>_ Buka Terminal</button>
+                <a href="#kontak" class="btn btn-secondary">Hubungi Saya <i class="fas fa-arrow-right"></i></a>
             </div>
 
             <!-- Interaktif Terminal Window Widget -->
@@ -668,8 +767,8 @@
                         <span class="dot dot-yellow"></span>
                         <span class="dot dot-green"></span>
                     </div>
-                    <div>bash — burhan@cyber-node:~</div>
-                    <div><i class="fas fa-lock"></i> SSH-2.0 Secured</div>
+                    <div>portfolio-console — burhan@tkj:~</div>
+                    <div><i class="fas fa-terminal"></i> Interactive Portfolio</div>
                 </div>
                 <div class="terminal-body" id="terminal-body">
                     <div class="terminal-history" id="terminal-history">
@@ -695,7 +794,7 @@
     
     <img src="profil.jpg" alt="Burhan Samudra" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); margin: 0 auto 1.5rem auto; display: block;">
     <h3>Burhan Samudra</h3>
-    <p>ID: TKJ-2026-MLG</p>
+    <p>Siswa XI TKJ • SMK Negeri 4 Malang</p>
 
                     <div class="tech-tags">
                         <span class="tech-tag">MikroTik</span>
@@ -705,12 +804,12 @@
                     </div>
                 </div>
                 <div class="profile-bio">
-                    <p>Saya siswa kelas XI Teknik Komputer dan Jaringan (TKJ) di SMK Negeri 4 Malang yang memiliki minat mendalam di bidang infrastruktur jaringan, administrasi server Linux, serta pengembangan web. Memiliki pengalaman praktis dalam konfigurasi jaringan, maintenance perangkat keras komputer, hingga pengelolaan basis data dan server lokal. Melalui program magang/PKL ini, saya siap mengaplikasikan keterampilan teknis saya serta belajar langsung dari dunia kerja industri IT.</p>
+                    <p>Saya merupakan siswa kelas XI Teknik Komputer dan Jaringan (TKJ) di SMK Negeri 4 Malang. Saya tertarik mempelajari teknologi informasi, khususnya jaringan komputer, perangkat keras, sistem operasi, dan pengembangan web. Selama belajar di sekolah, saya mendapat pengalaman melalui praktik dan proyek, seperti membuat maket Smart City berbasis konsep IoT, melakukan maintenance PC, serta mempelajari hosting website. Saya ingin mengembangkan kemampuan teknis dan memperoleh pengalaman langsung di lingkungan kerja melalui program PKL.</p>
                     
                     <div class="stats-grid">
                         <div class="stat-item">
-                            <span class="stat-label">STATUS MAGANG</span>
-                            <span class="stat-val">ONLINE & READY FOR WORK</span>
+                            <span class="stat-label">STATUS</span>
+                            <span class="stat-val">Terbuka untuk PKL</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-label">SEKOLAH</span>
@@ -733,12 +832,12 @@
         <section id="keahlian">
             <div class="section-header">
                 <span class="section-tag">// DOMAIN KEAHLIAN</span>
-                <h2>Spesialisasi Teknis</h2>
+                <h2>Keahlian yang Dipelajari</h2>
             </div>
             <div class="skills-grid">
                 <div class="skill-card">
                     <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
-                    <h3>Jaringan & Keamanan</h3>
+                    <h3>Jaringan Komputer</h3>
                     <ul class="skill-list">
                         <li>Subnetting IPv4 & CIDR</li>
                         <li>Cisco Packet Tracer</li>
@@ -748,7 +847,7 @@
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon"><i class="fas fa-server"></i></div>
-                    <h3>Server & Hosting</h3>
+                    <h3>Linux, Server & Hosting</h3>
                     <ul class="skill-list">
                         <li>Administrasi Server Linux</li>
                         <li>VirtualBox & VPS</li>
@@ -758,7 +857,7 @@
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon"><i class="fas fa-code"></i></div>
-                    <h3>Web & Database</h3>
+                    <h3>Pengembangan Web</h3>
                     <ul class="skill-list">
                         <li>HTML5 & CSS3 Responsive</li>
                         <li>Pemrograman PHP Dasar</li>
@@ -787,7 +886,7 @@
             </div>
             <div class="projects-grid">
                   <div class="project-card">
-            <img src="proyek1.jpg" alt="Proyek Smart City" style="width: 100%; height: 180px; object-fit: cover; border-bottom: 1px solid var(--border-color);">
+            <img src="proyek1.jpg" alt="Dokumentasi proyek praktik TKJ" style="width: 100%; height: 180px; object-fit: cover; border-bottom: 1px solid var(--border-color);">
                 <div class="project-body">
                         <span class="project-badge">Kelas X, Semester 1</span>
                         <h3>Maket Smart City: IoT, EWS, dan CCTV</h3>
@@ -800,7 +899,7 @@
                 </div>
 
                 <div class="project-card">
-            <img src="proyek2.jpg" alt="Proyek Smart City" style="width: 100%; height: 180px; object-fit: cover; border-bottom: 1px solid var(--border-color);">
+            <img src="proyek2.jpg" alt="Dokumentasi proyek praktik TKJ" style="width: 100%; height: 180px; object-fit: cover; border-bottom: 1px solid var(--border-color);">
                 <div class="project-body">
                         <span class="project-badge">Kelas X, Semester 2</span>
                         <h3>Maintenance PC SMPN 21 Malang</h3>
@@ -813,7 +912,7 @@
                 </div>
 
                 <div class="project-card">
-            <img src="proyek3.jpg" alt="Proyek Smart City" style="width: 100%; height: 180px; object-fit: cover; border-bottom: 1px solid var(--border-color);">
+            <img src="proyek3.jpg" alt="Dokumentasi proyek praktik TKJ" style="width: 100%; height: 180px; object-fit: cover; border-bottom: 1px solid var(--border-color);">
                 <div class="project-body">
                         <span class="project-badge">Kelas XI, Semester 1</span>
                         <h3>Hostara: Hosting dan Pengujian Keamanan Web</h3>
@@ -877,7 +976,14 @@
         });
 
         // Dynamic Typing Effect for $ Symbol Area
-        const phrases = ["System Integrator", "Network Specialist", "Linux Administrator", "Web Developer"];
+        const phrases = [
+            " IT Enthusiast",
+            "Network Engineering",
+            "Linux Administration",
+            "Network Troubleshooting",
+            "Computer Hardware",
+            "Web Development"
+        ];
         let phraseIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -913,12 +1019,7 @@
         const terminalInput = document.getElementById("terminal-input");
         const terminalHistory = document.getElementById("terminal-history");
         const terminalBody = document.getElementById("terminal-body");
-        const focusTerminalBtn = document.getElementById("focus-terminal-btn");
-
-        focusTerminalBtn.addEventListener("click", () => {
-            terminalInput.focus();
-            document.getElementById("terminal-section").scrollIntoView({ behavior: 'smooth' });
-        });
+        // Terminal dapat digunakan langsung melalui kolom perintah.
 
         terminalInput.addEventListener("keydown", function(e) {
             if (e.key === "Enter") {
@@ -977,15 +1078,20 @@
         const menuBtn = document.getElementById('menu-btn');
         const navMenu = document.getElementById('nav-menu');
 
-        menuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
+        if (menuBtn && navMenu) {
+            menuBtn.addEventListener('click', () => {
+                const isOpen = navMenu.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', String(isOpen));
+                menuBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
             });
-        });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+        }
     </script>
 </body>
 </html>
